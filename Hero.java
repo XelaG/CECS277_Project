@@ -3,10 +3,10 @@ import java.awt.Point;
 public class Hero {
 
     private Point loc;
-    int lvl;
-    int gold;
-    int keys;
-    int positions;
+    private int lvl;
+    private int gold;
+    private int keys;
+    private int positions;
 
     public Hero(String n) {
         this.loc = new Point(0, 0);
