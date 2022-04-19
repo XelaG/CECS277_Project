@@ -6,6 +6,7 @@ public class Main {
         Hero h = new Hero(heroName);
         EnemyGenerator eGen = new EnemyGenerator();
         loop: while (true) {
+            if (h.getHp() == 0) break;
             System.out.println(h.toString());
             int menuChoice = mainMenu(h);
             char currentCase = 'x';
@@ -62,6 +63,7 @@ public class Main {
                     break;
             }
         }
+        System.out.println("Game Over !");
     }
 
     public static int mainMenu(Hero h) {
@@ -98,6 +100,12 @@ public class Main {
     }
 
     public static Boolean fight(Hero h, Enemy e) {
+        System.out.println(h.getAttackMenu());
+        int choice = CheckInput.getIntRange(1, h.getNumAttackMenuItems());
+        System.out.println(h.getSubAttackMenu(choice));
+        int subChoice = CheckInput.getIntRange(1, h.getNumSubAttackMenuItems(choice));
+        h.attack(e, choice, subChoice);
+        e.attack(h);
         return false;
     }
 
