@@ -253,7 +253,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
      */
     @Override
     public String sword(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(0, 2);
+        e.takeDamage(damage);
+        return this.getName() + " slashes " e.getName() + " for " + damage + " damage.";
     }
 
     
@@ -263,7 +265,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
      */
     @Override
     public String axe(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(0, 4);
+        e.takeDamage(damage);
+        return this.getName() + " slashes " e.getName() + " for " + damage + " damage.";;
     }
 
     
@@ -273,7 +277,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
      */
     @Override
     public String magicMissile(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(0, 3);
+        e.takeDamage(damage);
+        return this.getName() + " hits " e.getName() + " with a magicMissile for " + damage + " damage.";
     }
 
     
@@ -283,7 +289,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
      */
     @Override
     public String fireball(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(1, 5);
+        e.takeDamage(damage);
+        return this.getName() + " hits " e.getName() + " with a Fireball for " + damage + " damage.";
     }
 
     
@@ -293,7 +301,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
      */
     @Override
     public String arrow(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(0, 4);
+        e.takeDamage(damage);
+        return this.getName() + " shoots " e.getName() + " with an arrow for " + damage + " damage.";
     }
 
     
@@ -303,6 +313,8 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
      */
     @Override
     public String fireArrow(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(1, 5);
+        e.takeDamage(damage);
+        return this.getName() + " shoots " e.getName() + " with a fire arrow for " + damage + " damage.";
     }
 }
