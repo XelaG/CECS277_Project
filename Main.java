@@ -110,6 +110,32 @@ public class Main {
     }
 
     public static void store(Hero h) {
-        
+        System.out.println("Welcome to the store. What would you like to buy ?");
+        System.out.println("1. Health Potion - 25g");
+        System.out.println("2. Key - 50g");
+        System.out.println("3. Nothing, just browsing...");
+        var choice = CheckInput.getIntRange(1, 3);
+        switch (choice) {
+            case 1:
+                if (h.getGold() < 25) {
+                    System.out.println("You don't have enough gold to buy a potion");
+                } else {
+                    h.pickUpPotion();
+                    h.spendGold(25);
+                    System.out.println("You bought a potion using 25 gold !");
+                }
+                break;
+            case 2:
+                if (h.getGold() < 50) {
+                    System.out.println("You don't have enough gold to buy a key");
+                } else {
+                    h.pickUpKey();
+                    h.spendGold(50);
+                    System.out.println("You bought a key using 50 gold !");
+                }
+                break;
+            default:
+                break;
+        }
     }
 }
