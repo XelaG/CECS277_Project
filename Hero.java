@@ -18,6 +18,10 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         this.potions = 0;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return super.toString() + "\nLevel: " + lvl + "\nGold: " + gold + "\nP: " + potions + " K: " + keys + "\n" + Map.getInstance().mapToString(loc);
@@ -28,10 +32,18 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         Map.getInstance().loadMap(this.lvl % 3);
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getLevel() {
         return lvl;
     }
 
+    
+    /** 
+     * @return char
+     */
     public char goNorth() {
         if (this.loc.getY() - 1 >= 0) {
             this.loc.translate(0, -1);
@@ -41,6 +53,10 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         return 'x';
     }
 
+    
+    /** 
+     * @return char
+     */
     public char goSouth() {
         if (this.loc.getY() + 1 < 5) {
             this.loc.translate(-1, 0);
@@ -50,6 +66,10 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         return 'x';
     }
 
+    
+    /** 
+     * @return char
+     */
     public char goEast() {
         if (this.loc.getX() + 1 < 5) {
             this.loc.translate(1, 0);
@@ -59,6 +79,10 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         return 'x';
     }
 
+    
+    /** 
+     * @return char
+     */
     public char goWest() {
         if (this.loc.getX() - 1 >= 0) {
             this.loc.translate(-1, 0);
@@ -68,14 +92,27 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         return 'x';
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getAttackMenu() {
         return "1. Physical Attack\n2. Magical Attack\n3. Ranged Attack\n";
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getNumAttackMenuItems() {
         return 3;
     }
 
+    
+    /** 
+     * @param choice
+     * @return String
+     */
     public String getSubAttackMenu(int choice) {
         if (choice == 1)
             return FIGHTER_MENU;
@@ -84,6 +121,11 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         return ARCHER_MENU;
     }
 
+    
+    /** 
+     * @param choice
+     * @return int
+     */
     public int getNumSubAttackMenuItems(int choice) {
         if (choice == 1)
             return NUM_FIGHTER_MENU_ITEMS;
@@ -92,31 +134,56 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         return NUM_ARCHER_MENU_ITEMS;
     }
 
+    
+    /** 
+     * @param e
+     * @param choice
+     * @param subChoice
+     * @return String
+     */
     public String attack(Enemy e, int choice, int subChoice) {
         switch (choice) {
-            case 1: switch (subChoice) {
-                        case 1: return this.sword(e);
-                        case 2: return this.axe(e);
-                    }
-            case 2: switch (subChoice) {
-                        case 1: return this.magicMissile(e);
-                        case 2: return this.fireball(e);
-                    }
-            case 3: switch (subChoice) {
-                        case 1: return this.arrow(e);
-                        case 2: return this.fireArrow(e);
-                    }
+            case 1: 
+                switch (subChoice) {
+                    case 1: return this.sword(e);
+                    case 2: return this.axe(e);
+                }
+            case 2: 
+                switch (subChoice) {
+                    case 1: return this.magicMissile(e);
+                    case 2: return this.fireball(e);
+                }
+            case 3: 
+                switch (subChoice) {
+                    case 1: return this.arrow(e);
+                    case 2: return this.fireArrow(e);
+                }
+            default:
+                return "";
         }
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getGold() {
         return this.gold;
     }
 
+    
+    /** 
+     * @param g
+     */
     public void collectGold(int g) {
         this.gold += g;
     }
 
+    
+    /** 
+     * @param g
+     * @return Boolean
+     */
     public Boolean spendGold(int g) {
         if (this.gold - g < 0) {
             return false;
@@ -125,25 +192,37 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         return true;
     }
 
+    
+    /** 
+     * @return Boolean
+     */
     public Boolean hasKey() {
-        if (this.key > 0)
+        if (this.keys > 0)
             return true;
         return false;
     }
 
     public void pickUpKey() {
-        this.key += 1;
+        this.keys += 1;
         Map.getInstance().removeCharAtLoc(this.loc);
     }
 
+    
+    /** 
+     * @return Boolean
+     */
     public Boolean useKey() {
         if (this.hasKey()) {
-            this.key -= 1;
+            this.keys -= 1;
             return true;
         }
         return false;
     }
 
+    
+    /** 
+     * @return Boolean
+     */
     public Boolean hasPotion() {
         if (this.potions > 0)
             return true;
@@ -155,6 +234,10 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         Map.getInstance().removeCharAtLoc(this.loc);
     }
 
+    
+    /** 
+     * @return Boolean
+     */
     public Boolean usePotion() {
         if (this.hasPotion()) {
             this.potions -= 1;
@@ -163,31 +246,61 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         return false;
     }
 
+    
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String sword(Entity e) {
         return "";
     }
 
+    
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String axe(Entity e) {
         return "";
     }
 
+    
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String magicMissile(Entity e) {
         return "";
     }
 
+    
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String fireball(Entity e) {
         return "";
     }
 
+    
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String arrow(Entity e) {
         return "";
     }
 
+    
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String fireArrow(Entity e) {
         return "";
