@@ -10,8 +10,8 @@ public class Hero extends Entity{
 
     public Hero(String n) {
         super(n, 25);
-        // Map.getInstance().loadMap(this.lvl);
-        // this.loc = Map.getInstance().findStart();
+        Map.getInstance().loadMap(this.lvl);
+        this.loc = Map.getInstance().findStart();
         this.lvl = 1;
         this.gold = 10;
         this.keys = 0;
