@@ -40,7 +40,7 @@ public class Main {
                 case 'f':
                     if (h.hasKey()) {
                         h.levelUp();
-                        h.useKey()
+                        h.useKey();
                         System.out.println("You found a locked gate. Luckily you have a key! You proceed to the next area");
                     } else {
                         System.out.println("You found a locked gate. Find the key to proceed to the next area");
