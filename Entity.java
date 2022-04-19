@@ -1,11 +1,13 @@
 public abstract class Entity {
 
     private String name;
-    int hp;
-    int maxHp;
+    private int hp;
+    private int maxHp;
 
     public Entity(String n, int mHp) {
-        
+        name = n;
+        hp = mHp;
+        maxHp = mHp;
     }
 
     public String getName() {
@@ -26,6 +28,6 @@ public abstract class Entity {
 
     @Override
     public String toString() {
-        return name + ": " + hp + "/" + maxHp;
+        return name + "\nHP: " + hp + "/" + maxHp;
     }
 }

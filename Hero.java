@@ -9,9 +9,9 @@ public class Hero extends Entity{
     private int potions;
 
     public Hero(String n) {
-        super(n, 25)
-        Map.getInstance().loadMap(this.lvl);
-        this.loc = Map.getInstance().findStart();
+        super(n, 25);
+        // Map.getInstance().loadMap(this.lvl);
+        // this.loc = Map.getInstance().findStart();
         this.lvl = 1;
         this.gold = 10;
         this.keys = 0;
@@ -20,7 +20,7 @@ public class Hero extends Entity{
 
     @Override
     public String toString() {
-        return "";
+        return super.toString() + "\nLevel: " + lvl + "\nGold: " + gold + "\nP: " + potions + " K: " + keys + "\n" + Map.getInstance().mapToString(loc);
     }
 
     public void levelUp() {
