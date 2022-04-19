@@ -66,6 +66,11 @@ public class Main {
         System.out.println("Game Over !");
     }
 
+    
+    /** Displays the main menu and take the user input
+     * @param h is the player
+     * @return int is the player choice
+     */
     public static int mainMenu(Hero h) {
         System.out.println("1. Go North");
         System.out.println("2. Go South");
@@ -75,6 +80,12 @@ public class Main {
         return CheckInput.getIntRange(1, 5);
     }
 
+    
+    /** Fight between a monster and a hero until either die or the player run away
+     * @param h is the player
+     * @param e is the enemy
+     * @return Boolean represents if the enemy is dead or alive at the end of the fight
+     */
     public static Boolean monsterRoom(Hero h, Enemy e) {
         loop: while (true) {
             System.out.println(e.toString());
@@ -99,6 +110,12 @@ public class Main {
         return false;
     }
 
+    
+    /** Does a single round of damage
+     * @param h is the player
+     * @param e is the enemy
+     * @return Boolean represents if the enemy is dead or alive at the end of the fight
+     */
     public static Boolean fight(Hero h, Enemy e) {
         System.out.println(h.getAttackMenu());
         int choice = CheckInput.getIntRange(1, h.getNumAttackMenuItems());
@@ -109,6 +126,10 @@ public class Main {
         return false;
     }
 
+    
+    /** Displays the store and make purchase available to the user
+     * @param h is the player
+     */
     public static void store(Hero h) {
         System.out.println("Welcome to the store. What would you like to buy ?");
         System.out.println("1. Health Potion - 25g");
