@@ -1,15 +1,21 @@
 import java.awt.Point;
 
-public class Hero {
+public class Hero extends Entity{
 
     private Point loc;
     private int lvl;
     private int gold;
     private int keys;
-    private int positions;
+    private int potions;
 
     public Hero(String n) {
-        this.loc = new Point(0, 0);
+        super(n, 25)
+        Map.getInstance().loadMap(this.lvl);
+        this.loc = Map.getInstance().findStart();
+        this.lvl = 1;
+        this.gold = 10;
+        this.keys = 0;
+        this.potions = 0;
     }
 
     @Override
@@ -18,7 +24,8 @@ public class Hero {
     }
 
     public void levelUp() {
-        
+        this.lvl += 1;
+        Map.getInstance().loadMap(this.lvl % 3);
     }
 
     public int getLevel() {
