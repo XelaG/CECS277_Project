@@ -44,14 +44,14 @@ public class Map {
     }
 
     public char getCharAtLoc(Point p) {
-        return map[p.x][p.y];
+        return map[p.y][p.x];
     }
 
     public Point findStart() {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                 if(map[i][j] == 's') {
-                    return new Point(i, j);
+                    return new Point(j, i);
                 }
             }
         }
@@ -59,11 +59,11 @@ public class Map {
     }
 
     public void reveal(Point p) {
-        discovered[p.x][p.y] = true;
+        discovered[p.y][p.x] = true;
     }
 
     public void removeCharAtLoc(Point p) {
-        map[p.x][p.y] = 'n';
+        map[p.y][p.x] = 'n';
         
     }
 
@@ -71,7 +71,7 @@ public class Map {
         String toReturn = "";
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
-                if (i == p.x && j == p.y) {
+                if (i == p.y && j == p.x) {
                     toReturn += "* ";
                 } else if (discovered[i][j] == true) {
                     toReturn += map[i][j] + " ";
