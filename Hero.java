@@ -10,12 +10,13 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     public Hero(String n) {
         super(n, 25);
-        Map.getInstance().loadMap(this.lvl);
-        this.loc = Map.getInstance().findStart();
         this.lvl = 1;
-        this.gold = 10;
+        this.gold = 25;
         this.keys = 0;
         this.potions = 0;
+        Map.getInstance().loadMap(this.lvl);
+        this.loc = Map.getInstance().findStart();
+        Map.getInstance().reveal(this.loc);
     }
 
     
@@ -142,25 +143,31 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
      * @return String
      */
     public String attack(Enemy e, int choice, int subChoice) {
+        String toReturn = "";
         switch (choice) {
             case 1: 
                 switch (subChoice) {
-                    case 1: return this.sword(e);
-                    case 2: return this.axe(e);
+                    case 1: toReturn =  this.sword(e);
+                    case 2: toReturn =  this.axe(e);
                 }
             case 2: 
                 switch (subChoice) {
-                    case 1: return this.magicMissile(e);
-                    case 2: return this.fireball(e);
+                    case 1: toReturn =  this.magicMissile(e);
+                    case 2: toReturn =  this.fireball(e);
                 }
             case 3: 
                 switch (subChoice) {
-                    case 1: return this.arrow(e);
-                    case 2: return this.fireArrow(e);
+                    case 1: toReturn =  this.arrow(e);
+                    case 2: toReturn =  this.fireArrow(e);
                 }
-            default:
-                return "";
         }
+        if (e.getHp() <= 0) {
+            toReturn += "\n" + "You defeated the " + e.getName() + "!" + "\n";
+            int droppedGold = MyUtils.randomIntRange(1 * lvl, 10 * lvl);
+            collectGold(droppedGold);
+            toReturn += "You found " + droppedGold + " gold on the corpse.";
+        }
+        return toReturn;
     }
 
     

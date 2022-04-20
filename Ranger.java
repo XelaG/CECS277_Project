@@ -4,16 +4,37 @@ public class Ranger extends Enemy implements Archer {
     }
 
     String attack(Hero h){
-        return "";
+        int rdm = MyUtils.randomIntRange(1, 2);
+        switch (rdm) {
+            case 1:
+                return arrow(h);
+            case 2:
+                return fireArrow(h);
+            default:
+                return "";
+        }
     }
 
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String arrow(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(0, 4);
+        e.takeDamage(damage);
+        return this.getName() + " shoots " + e.getName() + " with an arrow for " + damage + " damage.";
     }
 
+    
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String fireArrow(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(1, 5);
+        e.takeDamage(damage);
+        return this.getName() + " shoots " + e.getName() + " with a fire arrow for " + damage + " damage.";
     }
 }
