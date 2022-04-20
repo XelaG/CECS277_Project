@@ -96,6 +96,7 @@ public class Main {
             switch (decision) {
                 case 1:
                     fight(h, e);
+                    if (e.getHp() == 0) return true;
                     break;
                 case 2:
                     break loop;
