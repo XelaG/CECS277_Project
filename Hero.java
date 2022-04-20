@@ -12,7 +12,7 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         super(n, 25);
         this.lvl = 1;
         this.gold = 25;
-        this.keys = 0;
+        this.keys = 1;
         this.potions = 0;
         Map.getInstance().loadMap(this.lvl);
         this.loc = Map.getInstance().findStart();
@@ -30,7 +30,10 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     public void levelUp() {
         this.lvl += 1;
+        System.out.println("Map lvl = " + this.lvl % 3);
         Map.getInstance().loadMap(this.lvl % 3);
+        loc = Map.getInstance().findStart();
+        Map.getInstance().reveal(this.loc);
     }
 
     

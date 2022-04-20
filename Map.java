@@ -21,6 +21,8 @@ public class Map {
     }
 
     public void loadMap(int mapNum) {
+        discovered = new boolean[5][5];
+        map = new char[5][5];
         String filename = "./Configs/Map" + mapNum + ".txt";
         try {
             Scanner read = new Scanner(new File(filename));
