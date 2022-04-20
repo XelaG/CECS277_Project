@@ -60,7 +60,7 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
      */
     public char goSouth() {
         if (this.loc.getY() + 1 < 5) {
-            this.loc.translate(-1, 0);
+            this.loc.translate(0, 1);
             Map.getInstance().reveal(this.loc);
             return Map.getInstance().getCharAtLoc(this.loc);
         }
@@ -146,22 +146,20 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         String toReturn = "";
         switch (choice) {
             case 1: 
-                switch (subChoice) {
-                    case 1: toReturn =  this.sword(e);
-                    case 2: toReturn =  this.axe(e);
-                }
+                if (subChoice == 1) toReturn =  this.sword(e);
+                else toReturn =  this.axe(e);
+                break;
             case 2: 
-                switch (subChoice) {
-                    case 1: toReturn =  this.magicMissile(e);
-                    case 2: toReturn =  this.fireball(e);
-                }
+                if (subChoice == 1) toReturn =  this.magicMissile(e);
+                else toReturn =  this.fireball(e);
+                break;
             case 3: 
-                switch (subChoice) {
-                    case 1: toReturn =  this.arrow(e);
-                    case 2: toReturn =  this.fireArrow(e);
-                }
+                if (subChoice == 1) toReturn =  this.arrow(e);
+                else toReturn =  this.fireArrow(e);
+                break;
         }
         if (e.getHp() <= 0) {
+            Map.getInstance().removeCharAtLoc(loc);
             toReturn += "\n" + "You defeated the " + e.getName() + "!" + "\n";
             int droppedGold = MyUtils.randomIntRange(1 * lvl, 10 * lvl);
             collectGold(droppedGold);
