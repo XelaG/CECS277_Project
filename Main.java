@@ -88,6 +88,7 @@ public class Main {
      */
     public static Boolean monsterRoom(Hero h, Enemy e) {
         loop: while (true) {
+            if (e.getHp() <= 0) break loop;
             System.out.println(e.toString());
             System.out.println("1. Fight");
             System.out.println("2. Run Away");
@@ -122,8 +123,8 @@ public class Main {
         int choice = CheckInput.getIntRange(1, h.getNumAttackMenuItems());
         System.out.println(h.getSubAttackMenu(choice));
         int subChoice = CheckInput.getIntRange(1, h.getNumSubAttackMenuItems(choice));
-        h.attack(e, choice, subChoice);
-        e.attack(h);
+        System.out.println(h.attack(e, choice, subChoice));
+        if (e.getHp() > 0) System.out.println(e.attack(h));
         return false;
     }
 
