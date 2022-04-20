@@ -1,10 +1,10 @@
 public class Main {
 
     public static void main(String[] args) {
+        EnemyGenerator eGen = new EnemyGenerator();
         System.out.print("What is your name, traveler ? ");
         String heroName = CheckInput.getString();
         Hero h = new Hero(heroName);
-        EnemyGenerator eGen = new EnemyGenerator();
         loop: while (true) {
             if (h.getHp() == 0) break;
             System.out.println(h.toString());
