@@ -3,7 +3,7 @@ public class Wizard extends Enemy implements Magical {
         super(n, mHp);
     }
 
-    String attack(Hero h){
+    public String attack(Hero h){
         return "";
     }
 

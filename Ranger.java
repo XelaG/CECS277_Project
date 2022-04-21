@@ -3,7 +3,7 @@ public class Ranger extends Enemy implements Archer {
         super(n, mHp);
     }
 
-    String attack(Hero h){
+    public String attack(Hero h){
         return "";
     }
 
