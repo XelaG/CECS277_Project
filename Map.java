@@ -10,6 +10,9 @@ public class Map {
     }
 
     public static Map getInstance() {
+        if (instance == null){
+            instance = new Singleton();
+        }
         return instance;
     }
 
@@ -17,8 +20,8 @@ public class Map {
         String mapName = "Map" + mapNum + ".txt";
         try{
             Scanner read = new Scanner(new File(mapName));
+            int counter = 0;
             while(read.hasNextLine()){
-                counter = 0;
                 String line = read.nextLine();
                 for(int i=0; i<line.length(); i++){
                     line = line.replaceAll("\\s", "");
@@ -30,14 +33,28 @@ public class Map {
         }catch( FileNotFoundException fnf ) {
             System.out.println("File Not Found");
         }
+
     }
 
     public char getCharAtLoc(Point p) {
-        return 'a';
+        return maze[p.getX()][p.getY()];
     }
 
     public Point findStart() {
-        return new Point(0, 0);
+        int x = 0;
+        int y = 0;
+        while(true){
+            for(int i=0; i<map.length; i++){ //iterate through x values for map
+                x = i;
+                for(int j=0; j<map[0].length; j++){ //iterate through y values for map
+                    y = j;
+                    if(map[i][j] == 's'){ //jumps out of loop when starting point 's' is found
+                        Point p = new Point(x,y);
+                        return p;
+                    }
+                }
+            }
+        }
     }
 
     public void reveal(Point p) {
@@ -49,6 +66,13 @@ public class Map {
     }
 
     public String mapToString(Point p) {
-        return "";
+        String mapString;
+        for(int i=0; i<map.length; i++){
+            for(int j=0; j<map[0].length, j++){
+                mapString += map.charAt(j) + " ";
+            }
+            System.out.println();
+        }
+        return mapString;
     }
 }
