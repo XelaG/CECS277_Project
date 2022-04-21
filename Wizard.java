@@ -3,17 +3,40 @@ public class Wizard extends Enemy implements Magical {
         super(n, mHp);
     }
 
+    String attack(Hero h){
+        
     public String attack(Hero h){
-        return "";
+        int rdm = MyUtils.randomIntRange(1, 2);
+        switch (rdm) {
+            case 1:
+                return magicMissile(h);
+            case 2:
+                return fireball(h);
+            default:
+                return "";
+        }
     }
 
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String magicMissile(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(0, 3);
+        e.takeDamage(damage);
+        return this.getName() + " hits " + e.getName() + " with a magicMissile for " + damage + " damage.";
     }
 
+    
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String fireball(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(1, 5);
+        e.takeDamage(damage);
+        return this.getName() + " hits " + e.getName() + " with a Fireball for " + damage + " damage.";
     }
 }

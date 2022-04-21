@@ -3,17 +3,39 @@ public class Warrior extends Enemy implements Fighter {
         super(n, mHp);
     }
 
+
     public String attack(Hero h){
-        return "";
+        int rdm = MyUtils.randomIntRange(1, 2);
+        switch (rdm) {
+            case 1:
+                return sword(h);
+            case 2:
+                return axe(h);
+            default:
+                return "";
+        }
     }
 
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String sword(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(0, 2);
+        e.takeDamage(damage);
+        return this.getName() + " slashes " + e.getName() + " for " + damage + " damage.";
     }
 
+    
+    /** 
+     * @param e
+     * @return String
+     */
     @Override
     public String axe(Entity e) {
-        return "";
+        int damage = MyUtils.randomIntRange(0, 4);
+        e.takeDamage(damage);
+        return this.getName() + " slashes " + e.getName() + " for " + damage + " damage.";
     }
 }
