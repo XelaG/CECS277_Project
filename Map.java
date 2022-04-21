@@ -1,78 +1,88 @@
 import java.awt.Point;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Map {
     private char[][] map;
-    private Boolean[][] discovered;
+    private boolean[][] discovered;
     private static Map instance = null;
 
     private Map() {
+        map = new char[5][5];
+        discovered = new boolean[5][5];
     }
 
     public static Map getInstance() {
-        if (instance == null){
-            instance = new Singleton();
+        if (instance == null) {
+            instance = new Map();
         }
         return instance;
     }
 
     public void loadMap(int mapNum) {
-        String mapName = "Map" + mapNum + ".txt";
-        try{
-            Scanner read = new Scanner(new File(mapName));
-            int counter = 0;
-            while(read.hasNextLine()){
-                String line = read.nextLine();
-                for(int i=0; i<line.length(); i++){
-                    line = line.replaceAll("\\s", "");
-                    map[counter][i] = line.charAt(i);
+        discovered = new boolean[5][5];
+        map = new char[5][5];
+        String filename = "./Configs/Map" + mapNum + ".txt";
+        try {
+            Scanner read = new Scanner(new File(filename));
+            int i = 0;
+            while(read.hasNextLine()) {
+                String word = read.nextLine();
+                String[] splitted = word.split(" ");
+                int j = 0;
+                for (String c : splitted) {
+                    map[i][j] = c.charAt(0);
+                    j++;
                 }
-                counter++;
+                i++;
             }
-        read.close();
-        }catch( FileNotFoundException fnf ) {
-            System.out.println("File Not Found");
+            read.close();
+        } catch( FileNotFoundException fnf ) {
+            System.out.println("File not found");
+        } catch (NullPointerException npe) {
+            System.out.println("Could not sort list");
         }
-
     }
 
     public char getCharAtLoc(Point p) {
-        return maze[p.getX()][p.getY()];
+        return map[p.y][p.x];
     }
 
     public Point findStart() {
-        int x = 0;
-        int y = 0;
-        while(true){
-            for(int i=0; i<map.length; i++){ //iterate through x values for map
-                x = i;
-                for(int j=0; j<map[0].length; j++){ //iterate through y values for map
-                    y = j;
-                    if(map[i][j] == 's'){ //jumps out of loop when starting point 's' is found
-                        Point p = new Point(x,y);
-                        return p;
-                    }
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if(map[i][j] == 's') {
+                    return new Point(j, i);
                 }
             }
         }
+        return null;
     }
 
     public void reveal(Point p) {
-        
+        discovered[p.y][p.x] = true;
     }
 
     public void removeCharAtLoc(Point p) {
+        map[p.y][p.x] = 'n';
         
     }
 
     public String mapToString(Point p) {
-        String mapString;
-        for(int i=0; i<map.length; i++){
-            for(int j=0; j<map[0].length, j++){
-                mapString += map.charAt(j) + " ";
+        String toReturn = "";
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (i == p.y && j == p.x) {
+                    toReturn += "* ";
+                } else if (discovered[i][j] == true) {
+                    toReturn += map[i][j] + " ";
+                } else {
+                    toReturn += "x ";
+                }
             }
-            System.out.println();
+            toReturn += "\n";
         }
-        return mapString;
+        return toReturn;
     }
 }
