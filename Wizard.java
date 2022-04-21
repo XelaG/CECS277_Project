@@ -4,6 +4,8 @@ public class Wizard extends Enemy implements Magical {
     }
 
     String attack(Hero h){
+        
+    public String attack(Hero h){
         int rdm = MyUtils.randomIntRange(1, 2);
         switch (rdm) {
             case 1:
