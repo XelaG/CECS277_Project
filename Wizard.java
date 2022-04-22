@@ -18,6 +18,7 @@ public class Wizard extends Enemy implements Magical {
     }
 
     /** 
+     * String for magic missile attack
      * @param e
      * @return String
      */
@@ -30,6 +31,7 @@ public class Wizard extends Enemy implements Magical {
 
     
     /** 
+     * String for fire ball attack
      * @param e
      * @return String
      */

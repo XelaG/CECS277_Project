@@ -18,6 +18,7 @@ public class Ranger extends Enemy implements Archer {
     }
 
     /** 
+     * String for arrow attack
      * @param e
      * @return String
      */
@@ -30,6 +31,7 @@ public class Ranger extends Enemy implements Archer {
 
     
     /** 
+     * String for fire arrow attack
      * @param e
      * @return String
      */
