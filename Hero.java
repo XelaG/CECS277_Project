@@ -12,7 +12,7 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         super(n, 25);
         this.lvl = 1;
         this.gold = 25;
-        this.keys = 1;
+        this.keys = 0;
         this.potions = 0;
         Map.getInstance().loadMap(this.lvl);
         this.loc = Map.getInstance().findStart();

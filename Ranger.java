@@ -3,8 +3,6 @@ public class Ranger extends Enemy implements Archer {
         super(n, mHp);
     }
 
-    String attack(Hero h){
-        
     public String attack(Hero h){
         int rdm = MyUtils.randomIntRange(1, 2);
         switch (rdm) {
