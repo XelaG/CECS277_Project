@@ -17,6 +17,7 @@ public class Warrior extends Enemy implements Fighter {
     }
 
     /** 
+     * String for sword attack
      * @param e
      * @return String
      */
@@ -29,6 +30,7 @@ public class Warrior extends Enemy implements Fighter {
 
     
     /** 
+     * String for axe attack
      * @param e
      * @return String
      */

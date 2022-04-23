@@ -7,19 +7,27 @@ public class Map {
     private char[][] map;
     private boolean[][] discovered;
     private static Map instance = null;
-
+    /**
+     * Create a map
+     */
     private Map() {
         map = new char[5][5];
         discovered = new boolean[5][5];
     }
-
+    /**
+     * Get instance
+     * @return instance
+     */
     public static Map getInstance() {
         if (instance == null) {
             instance = new Map();
         }
         return instance;
     }
-
+    /**
+     * Reads in map from the file and stores it in the character array
+     * @param mapNum number for map file
+     */
     public void loadMap(int mapNum) {
         discovered = new boolean[5][5];
         map = new char[5][5];
@@ -44,7 +52,11 @@ public class Map {
             System.out.println("Could not sort list");
         }
     }
-
+    /**
+     * Get character at location
+     * @param p point
+     * @return the character at p
+     */
     public char getCharAtLoc(Point p) {
         return map[p.y][p.x];
     }
@@ -59,16 +71,26 @@ public class Map {
         }
         return null;
     }
-
+    /**
+     * Reveal the point
+     * @param p point
+     */
     public void reveal(Point p) {
         discovered[p.y][p.x] = true;
     }
-
+    /**
+     * Remove character by replacing with 'n'
+     * @param p point
+     */
     public void removeCharAtLoc(Point p) {
         map[p.y][p.x] = 'n';
         
     }
-
+    /**
+     * Turn map into string
+     * @param p point
+     * @return string of map
+     */
     public String mapToString(Point p) {
         String toReturn = "";
         for (int i = 0; i < map.length; i++) {
