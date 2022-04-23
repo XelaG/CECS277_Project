@@ -7,6 +7,7 @@ public class Map {
     private char[][] map;
     private boolean[][] discovered;
     private static Map instance = null;
+
     /**
      * Create a map
      */
@@ -15,8 +16,8 @@ public class Map {
         discovered = new boolean[5][5];
     }
     /**
-     * Get instance
-     * @return instance
+     * Get instance of the map or create it if it's not defined
+     * @return instance of the map
      */
     public static Map getInstance() {
         if (instance == null) {
@@ -52,15 +53,20 @@ public class Map {
             System.out.println("Could not sort list");
         }
     }
+
     /**
      * Get character at location
-     * @param p point
-     * @return the character at p
+     * @param p is the coordinates of the point we want the char of
+     * @return the character at the coordinates p
      */
     public char getCharAtLoc(Point p) {
         return map[p.y][p.x];
     }
 
+    /**
+     * Find starting point of the map
+     * @return Coordinates of the starting point
+     */
     public Point findStart() {
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
@@ -71,24 +77,27 @@ public class Map {
         }
         return null;
     }
+
     /**
-     * Reveal the point
-     * @param p point
+     * Reveal the position in the map
+     * @param p is the coordinates of the tile we want to reveal
      */
     public void reveal(Point p) {
         discovered[p.y][p.x] = true;
     }
+
     /**
-     * Remove character by replacing with 'n'
-     * @param p point
+     * Remove character by replacing with 'n' at specified location
+     * @param p is the coordinates of the tile we want to remove
      */
     public void removeCharAtLoc(Point p) {
         map[p.y][p.x] = 'n';
         
     }
+
     /**
      * Turn map into string
-     * @param p point
+     * @param p is the location of the player in the map
      * @return string of map
      */
     public String mapToString(Point p) {

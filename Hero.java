@@ -202,7 +202,8 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     
     /** 
-     * @return Boolean
+     * Checks if the hero has a key
+     * @return Boolean decribing if the hero has a key or not
      */
     public Boolean hasKey() {
         if (this.keys > 0)
@@ -210,6 +211,10 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         return false;
     }
 
+    /** 
+     * Pick up a key and adds it to inventory
+     * @return Boolean if key has been used
+     */
     public void pickUpKey() {
         this.keys += 1;
         Map.getInstance().removeCharAtLoc(this.loc);
@@ -217,7 +222,8 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     
     /** 
-     * @return Boolean
+     * Use a key
+     * @return Boolean if key has been used
      */
     public Boolean useKey() {
         if (this.hasKey()) {
@@ -229,7 +235,8 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     
     /** 
-     * @return Boolean
+     * Checks if the hero has a potion
+     * @return Boolean describing if the hero has a potion
      */
     public Boolean hasPotion() {
         if (this.potions > 0)
@@ -237,6 +244,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         return false;
     }
 
+    /** 
+     * Pick up a potion and adds it to the inventory
+     */
     public void pickUpPotion() {
         this.potions += 1;
         Map.getInstance().removeCharAtLoc(this.loc);
@@ -244,11 +254,13 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     
     /** 
-     * @return Boolean
+     * Use a potion to heal the hero
+     * @return Boolean if the potion was used or not
      */
     public Boolean usePotion() {
         if (this.hasPotion()) {
             this.potions -= 1;
+            this.heal();
             return true;
         }
         return false;
@@ -256,8 +268,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     
     /** 
-     * @param e
-     * @return String
+     * Sword attacks deals damages to the entity and returns a string describing the attack
+     * @param e is the entity taking the damages
+     * @return String describing the attack
      */
     @Override
     public String sword(Entity e) {
@@ -268,8 +281,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     
     /** 
-     * @param e
-     * @return String
+     * Axe attacks deals damages to the entity and returns a string describing the attack
+     * @param e is the entity taking the damages
+     * @return String describing the attack
      */
     @Override
     public String axe(Entity e) {
@@ -280,8 +294,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     
     /** 
-     * @param e
-     * @return String
+     * Magic Missile attacks deals damages to the entity and returns a string describing the attack
+     * @param e is the entity taking the damages
+     * @return String describing the attack
      */
     @Override
     public String magicMissile(Entity e) {
@@ -292,8 +307,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     
     /** 
-     * @param e
-     * @return String
+     * Fireball attacks deals damages to the entity and returns a string describing the attack
+     * @param e is the entity taking the damages
+     * @return String describing the attack
      */
     @Override
     public String fireball(Entity e) {
@@ -304,8 +320,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     
     /** 
-     * @param e
-     * @return String
+     * Arrow attacks deals damages to the entity and returns a string describing the attack
+     * @param e is the entity taking the damages
+     * @return String describing the attack
      */
     @Override
     public String arrow(Entity e) {
@@ -316,8 +333,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
 
     
     /** 
-     * @param e
-     * @return String
+     * Fire Arrow attacks deals damages to the entity and returns a string describing the attack
+     * @param e is the entity taking the damages
+     * @return String describing the attack
      */
     @Override
     public String fireArrow(Entity e) {

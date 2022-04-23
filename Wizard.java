@@ -3,6 +3,11 @@ public class Wizard extends Enemy implements Magical {
         super(n, mHp);
     }
 
+    /** 
+     * attacks deals damages to the entity and returns a string describing the attack
+     * @param h is the entity taking the damages
+     * @return String describing the attack
+     */
     public String attack(Hero h){
         int rdm = MyUtils.randomIntRange(1, 2);
         switch (rdm) {
@@ -16,9 +21,9 @@ public class Wizard extends Enemy implements Magical {
     }
 
     /** 
-     * String for magic missile attack
-     * @param e
-     * @return String
+     * Magic Missile attacks deals damages to the entity and returns a string describing the attack
+     * @param e is the entity taking the damages
+     * @return String describing the attack
      */
     @Override
     public String magicMissile(Entity e) {
@@ -29,9 +34,9 @@ public class Wizard extends Enemy implements Magical {
 
     
     /** 
-     * String for fire ball attack
-     * @param e
-     * @return String
+     * Fireball attacks deals damages to the entity and returns a string describing the attack
+     * @param e is the entity taking the damages
+     * @return String describing the attack
      */
     @Override
     public String fireball(Entity e) {

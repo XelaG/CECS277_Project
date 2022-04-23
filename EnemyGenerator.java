@@ -25,6 +25,12 @@ public class EnemyGenerator {
         }
     }
 
+    
+    /** 
+     * Generates an enemy randomly from the map
+     * @param level defines the level of the player at this time
+     * @return Generated Enemy
+     */
     public Enemy generateEnemy(int level) {
         Set<String> set = enemies.keySet();
         int type = MyUtils.randomIntRange(1, 3);
