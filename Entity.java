@@ -4,6 +4,11 @@ public abstract class Entity {
     private int hp;
     private int maxHp;
 
+    /** 
+     * Constructor of the entity class
+     * @param n is the name of the entity
+     * @param mHp is the max health points of the entity
+     */
     public Entity(String n, int mHp) {
         name = n;
         hp = mHp;

@@ -8,6 +8,9 @@ public class EnemyGenerator {
 
     private HashMap<String, Integer> enemies;
 
+    /** 
+     * Constructor of the enemy generator
+     */
     public EnemyGenerator() {
         enemies = new HashMap<String, Integer>();
         try {
