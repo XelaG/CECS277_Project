@@ -8,6 +8,10 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     private int keys;
     private int potions;
 
+    /** 
+     * Create a Hero object
+     * @param n is the name of the hero
+     */
     public Hero(String n) {
         super(n, 25);
         this.lvl = 1;
@@ -20,7 +24,7 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
+    /** A string representing the hero object
      * @return String
      */
     @Override
@@ -28,6 +32,9 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
         return super.toString() + "\nLevel: " + lvl + "\nGold: " + gold + "\nP: " + potions + " K: " + keys + "\n" + Map.getInstance().mapToString(loc);
     }
 
+
+    /** Level up the hero and load the new map
+     */
     public void levelUp() {
         this.lvl += 1;
         System.out.println("Map lvl = " + this.lvl % 3);
@@ -37,7 +44,7 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
+    /** Get the level of the hero
      * @return int
      */
     public int getLevel() {
@@ -45,8 +52,8 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
-     * @return char
+    /** translate the position of the hero to the north
+     * @return char representing what is at this new position or 'x' if it's out bound the map
      */
     public char goNorth() {
         if (this.loc.getY() - 1 >= 0) {
@@ -58,8 +65,8 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
-     * @return char
+    /** translate the position of the hero to the south
+     * @return char representing what is at this new position or 'x' if it's out bound the map
      */
     public char goSouth() {
         if (this.loc.getY() + 1 < 5) {
@@ -71,8 +78,8 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
-     * @return char
+    /** translate the position of the hero to the east
+     * @return char representing what is at this new position or 'x' if it's out bound the map
      */
     public char goEast() {
         if (this.loc.getX() + 1 < 5) {
@@ -84,8 +91,8 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
-     * @return char
+    /** translate the position of the hero to the west
+     * @return char representing what is at this new position or 'x' if it's out bound the map
      */
     public char goWest() {
         if (this.loc.getX() - 1 >= 0) {
@@ -97,7 +104,7 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
+    /** Get the attack menu
      * @return String
      */
     public String getAttackMenu() {
@@ -105,7 +112,7 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
+    /** Get the number of option for the attack menu
      * @return int
      */
     public int getNumAttackMenuItems() {
@@ -113,8 +120,8 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
-     * @param choice
+    /** Get the sub attack menu
+     * @param choice the subchoice menu
      * @return String
      */
     public String getSubAttackMenu(int choice) {
@@ -126,8 +133,8 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
-     * @param choice
+    /** Get the number of option for a sub attack menu
+     * @param choice the subchoice menu
      * @return int
      */
     public int getNumSubAttackMenuItems(int choice) {
@@ -139,10 +146,10 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
-     * @param e
-     * @param choice
-     * @param subChoice
+    /** Attack an enemy
+     * @param e the enemy to attack
+     * @param choice the type of attack
+     * @param subChoice the attack
      * @return String
      */
     public String attack(Enemy e, int choice, int subChoice) {
@@ -172,7 +179,7 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
+    /** Get the number of gold
      * @return int
      */
     public int getGold() {
@@ -180,17 +187,17 @@ public class Hero extends Entity implements Fighter, Magical, Archer {
     }
 
     
-    /** 
-     * @param g
+    /** Add gold
+     * @param g quantity of gold
      */
     public void collectGold(int g) {
         this.gold += g;
     }
 
     
-    /** 
-     * @param g
-     * @return Boolean
+    /** Remove gold
+     * @param g quantity of gold
+     * @return Boolean if it works
      */
     public Boolean spendGold(int g) {
         if (this.gold - g < 0) {
