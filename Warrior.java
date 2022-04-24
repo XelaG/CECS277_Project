@@ -1,4 +1,9 @@
 public class Warrior extends Enemy implements Fighter {
+    /** 
+     * Create a Warrior object
+     * @param n name
+     * @param mHp maxHp
+     */
     public Warrior(String n, int mHp) {
         super(n, mHp);
     }

@@ -1,4 +1,9 @@
 public class Ranger extends Enemy implements Archer {
+    /** 
+     * Create a Ranger object
+     * @param n name
+     * @param mHp maxHp
+     */
     public Ranger(String n, int mHp) {
         super(n, mHp);
     }

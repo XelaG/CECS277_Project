@@ -1,4 +1,9 @@
 public class Wizard extends Enemy implements Magical {
+    /** 
+     * Create a Wizard object
+     * @param n name
+     * @param mHp maxHp
+     */
     public Wizard(String n, int mHp) {
         super(n, mHp);
     }
